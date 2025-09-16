@@ -78,6 +78,16 @@ const App = () => {
     return (
         <TableContainer>
             <h1>IMPROVE Risk Score for Venous Thromboembolism (VTE)</h1>
+            <div style={{ marginBottom: '24px' }}>
+                <a
+                    href="https://www.mdcalc.com/calc/10349/improve-risk-score-venous-thromboembolism-vte"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: '1rem', color: '#1976d2', textDecoration: 'underline' }}
+                >
+                    Please see the original version of this calculator by Dr. Alex C. Spyropoulos at https://www.mdcalc.com/calc/10349/improve-risk-score-venous-thromboembolism-vte
+                </a>
+            </div>
             <div style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -128,19 +138,19 @@ const App = () => {
                     flex: '0 0 500px',
                     marginLeft: '32px',
                     padding: '16px',
-                    border: '2px solid #ddd',
+                    border: score < 2 ? '2px solid #43a047' : '2px solid #e53935', // medium green or medium red
                     borderRadius: '8px',
-                    background: '#fff',
+                    background: score < 2 ? '#b6e7c9' : '#f8bcbc', // darker green or red
                     fontFamily: 'inherit',
                     fontSize: '1rem',
                     color: '#222',
                     boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
                 }}>
                     <h2 style={{marginTop:0}}>Recommended Intervention</h2>
-                    <p style={{ color: score < 2 ? '#14532d' : '#991b1b', fontSize: '1.125rem', fontWeight: 'bold' }}>
+                    <p style={{ fontSize: '1.125rem', fontWeight: 'bold' }}>
                         {score < 2
                             ? 'Pharmacologic thromboprophylaxis is not warranted. Instead, early ambulation with or without mechanical prophylaxis may be appropriate.'
-                            : `⚠️ Start appropriate pharmacologic (e.g., low molecular weight heparin) or mechanical (e.g., compression stockings, intermittent pneumatic compression) prophylaxis. ⚠️`}
+                            : 'Start appropriate pharmacologic (e.g., low molecular weight heparin) or mechanical (e.g., compression stockings, intermittent pneumatic compression) prophylaxis.'}
                     </p>
                 </div>
             </div>
