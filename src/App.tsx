@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import Switch from 'react-switch';
@@ -181,4 +182,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
