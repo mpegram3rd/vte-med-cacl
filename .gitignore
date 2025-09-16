@@ -1,0 +1,36 @@
+# Vite & React
+node_modules/
+dist/
+.env
+.env.*
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# MacOS
+*.DS_Store
+
+# Optional: coverage reports
+coverage/
+
+# Optional: local build cache
+.cache/
+
+# Optional: typescript
+*.tsbuildinfo
+
+# Optional: misc
+*.swp
+*.tmp
+
+# Optional: system files
+Thumbs.db
+
