@@ -72,9 +72,20 @@ const InterventionBox = styled.div<{lowRisk: boolean}>`
   font-size: 1rem;
   color: #222;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-sizing: border-box;
   @media (max-width: 900px) {
     margin-left: 0;
+    flex: 1 1 auto;
     width: 100%;
+    max-width: 100%;
+  }
+  @media (max-width: 600px) {
+    padding: 14px 14px 18px;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 420px) {
+    padding: 12px 12px 16px;
+    font-size: 0.9rem;
   }
 `;
 
