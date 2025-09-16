@@ -63,6 +63,18 @@ const App = () => {
         });
     }
 
+    // Helper to calculate 3-month risk of VTE
+    const getVTERisk = (score) => {
+        if (score === 0) return '0.4%';
+        if (score === 1) return '0.6%';
+        if (score === 2) return '1.0%';
+        if (score === 3) return '1.7%';
+        if (score === 4) return '2.9%';
+        if (score >= 5 && score <= 10) return '7.2%';
+        if (score > 10) return '>7.2%';
+        return '-';
+    }
+
     return (
         <TableContainer>
             <h1>IMPROVE Risk Score for Venous Thromboembolism (VTE)</h1>
@@ -108,6 +120,9 @@ const App = () => {
                         </tbody>
                     </Table>
                     <ScoreDisplay>Total Score: {score}</ScoreDisplay>
+                    <ScoreDisplay>
+                        3-month risk of VTE: {getVTERisk(score)}
+                    </ScoreDisplay>
                 </div>
                 <div style={{
                     flex: '0 0 500px',
