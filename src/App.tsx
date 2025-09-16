@@ -31,6 +31,25 @@ const ScoreDisplay = styled.div`
   font-weight: bold;
 `;
 
+const Title = styled.h1`
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: clamp(1.6rem, 2.2vw + 1rem, 3rem);
+  line-height: 1.15;
+  max-width: 900px;
+  padding: 0 16px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+`;
+
+const FindingNote = styled.div`
+  margin-top: 4px;
+  font-size: 0.7rem;
+  line-height: 1.1;
+  color: #555;
+  font-weight: 500;
+`;
+
 interface FindingScores {
     previousVTE: number;
     knownThrombophilia: number;
@@ -100,13 +119,13 @@ const App: React.FC = () => {
 
     return (
         <TableContainer>
-            <h1>IMPROVE Risk Score for Venous Thromboembolism (VTE)</h1>
+            <Title>IMPROVE Risk Score for Venous Thromboembolism (VTE)</Title>
             <div style={{ marginBottom: '24px' }}>
                 <a
                     href="https://www.mdcalc.com/calc/10349/improve-risk-score-venous-thromboembolism-vte"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ fontSize: '1rem', color: '#1976d2', textDecoration: 'underline' }}
+                    style={{ fontSize: '1rem', color: '#1976d2', textDecoration: 'underline', wordBreak: 'break-word', overflowWrap: 'anywhere', textAlign: 'center', display: 'inline-block', maxWidth: '900px', padding: '0 16px' }}
                 >
                     Please see the original version of this calculator by Dr. Alex C. Spyropoulos at https://www.mdcalc.com/calc/10349/improve-risk-score-venous-thromboembolism-vte
                 </a>
@@ -129,17 +148,24 @@ const App: React.FC = () => {
                         <tbody>
                         {Object.entries(findings).map(([key, value]) => (
                             <tr key={key}>
-                                <td>{
-                                    {
-                                        previousVTE: 'Previous VTE',
-                                        knownThrombophilia: 'Known thrombophilia',
-                                        currentLowerLimbParalysis: 'Current lower-limb paralysis',
-                                        currentCancer: 'Current Cancer',
-                                        immobilized7Days: 'Immobilized >= 7 days',
-                                        icuCcuStay: 'ICU/CCU stay',
-                                        ageOver60: 'Age >60 years'
-                                    }[key as keyof Findings]
-                                }</td>
+                                <td>
+                                    <div style={{display:'flex', flexDirection:'column'}}>
+                                      <span>{
+                                        {
+                                            previousVTE: 'Previous VTE',
+                                            knownThrombophilia: 'Known thrombophilia',
+                                            currentLowerLimbParalysis: 'Current lower-limb paralysis',
+                                            currentCancer: 'Current Cancer',
+                                            immobilized7Days: 'Immobilized >= 7 days',
+                                            icuCcuStay: 'ICU/CCU stay',
+                                            ageOver60: 'Age >60 years'
+                                        }[key as keyof Findings]
+                                      }</span>
+                                      {key === 'immobilized7Days' && (
+                                        <FindingNote>Immediately prior to and during hospital admission</FindingNote>
+                                      )}
+                                    </div>
+                                </td>
                                 <td>
                                     <Switch
                                         onChange={() => handleChange(key as keyof Findings)}
